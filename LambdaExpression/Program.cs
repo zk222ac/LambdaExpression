@@ -10,12 +10,45 @@ namespace LambdaExpression
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            // What is delegate : delegate is a pointer or reference by a method 
+            // Func<int , int> --> first one b/w angle bracket is input and last one is output ( return type)
+            // Action <int> --> does not return anything but takes zero or more arguments (inputs) 
+            // arg => expression 
+            //Func<int,int> square = number => number * number;
+            //Console.WriteLine(square(5));
+            ////Func<int, int> square = GetSquare;
+           // Console.WriteLine(GetSquare(5));
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            // () => .... No arguments
+            // x =>  .... single arguments
+            // (x, y) => ... multiple arguments 
+
+            // Factor 
+            //const int factor = 5;
+            //Func<int, int> multiplier = n => n * factor;
+            //Console.WriteLine(multiplier(10));
+            //Console.ReadKey();
+
+            var books = new BookRepository().GetBooks();
+            var listBook = books.FindAll(b => b.Price < 50);
+
+            //var listBook = books.FindAll(IsCheaperThan100Dollars);
+            foreach ( var i in listBook)
+            {
+                Console.WriteLine(i);
+            }
+
+            Console.ReadKey();
+        }
+
+        //static int GetSquare(int n)
+        //{
+        //    return n * n;
+        //}
+
+        static bool IsCheaperThan100Dollars(Book book)
+        {
+            return book.Price < 100;
         }
     }
 }
